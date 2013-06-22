@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <span id='purchase-order-id'><%= @purchase_order.id %></span>
+</p>
+
+<p>
+  <b>Supplier:</b>
+  <%= @purchase_order.supplier %>
+</p>
+
+<p>
+  <b>Expected date:</b>
+  <%= @purchase_order.expected_date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @purchase_order.status %>
+</p>
+
+<%= button_to 'Receive Items', receive_purchase_order_path, method: 'put'%>
+
+<p>
+<%= link_to 'Edit', edit_purchase_order_path(@purchase_order) %> |
+<%= link_to 'Back', purchase_orders_path %>
+</p>
