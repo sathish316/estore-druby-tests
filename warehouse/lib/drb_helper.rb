@@ -2,10 +2,12 @@ require 'drb/drb'
 
 class Shelf < ActiveRecord::Base
   include DRbUndumped
+  extend DRbUndumped
 end
 
 class InventoryItem < ActiveRecord::Base
   include DRbUndumped
+  extend DRbUndumped
 end
 
 class DRbHelper
@@ -14,11 +16,15 @@ class DRbHelper
   end
 
   def find(model_name, params)
-    object = model_name.to_s.classify.constantize.where(params).last
+    object = model(model_name).where(params).first
   end
 
   def find_all(model_name, params)
-    objects = model_name.to_s.classify.constantize.where(params).all
+    objects = model(model_name).where(params).all
+  end
+
+  def model(model_name)
+    model_name.to_s.classify.constantize
   end
 end
 

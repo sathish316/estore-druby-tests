@@ -1,3 +1,14 @@
+Before do
+  purchasing_drb.model(:purchase_order).delete_all
+  purchasing_drb.model(:purchase_order_item).delete_all
+  warehouse_drb.model(:inventory_item).delete_all
+  shipping_drb.model(:delivery_item).delete_all
+  store_drb.model(:order).delete_all
+  store_drb.model(:order_item).delete_all
+  store_drb.model(:cart).delete_all
+  store_drb.model(:cart_item).delete_all
+end
+
 Given /^EStore has ordered "(.*?)" units of "(.*?)" book with id "(.*?)" from "(.*?)"$/ do |quantity, product_title, product_id, supplier|
   po_page = Page::Purchasing::PurchaseOrder.new
   @po_id = po_page.create_order(supplier)
