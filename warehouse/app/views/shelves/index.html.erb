@@ -1,0 +1,27 @@
+<h1>Listing shelves</h1>
+
+<table>
+  <tr>
+    <th>X</th>
+    <th>Y</th>
+    <th>Level</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shelves.each do |shelf| %>
+  <tr>
+    <td><%= shelf.x %></td>
+    <td><%= shelf.y %></td>
+    <td><%= shelf.level %></td>
+    <td><%= link_to 'Show', shelf %></td>
+    <td><%= link_to 'Edit', edit_shelf_path(shelf) %></td>
+    <td><%= link_to 'Destroy', shelf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shelf', new_shelf_path %>

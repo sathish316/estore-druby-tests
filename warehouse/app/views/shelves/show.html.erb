@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>X:</b>
+  <%= @shelf.x %>
+</p>
+
+<p>
+  <b>Y:</b>
+  <%= @shelf.y %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%= @shelf.level %>
+</p>
+
+
+<%= link_to 'Edit', edit_shelf_path(@shelf) %> |
+<%= link_to 'Back', shelves_path %>
