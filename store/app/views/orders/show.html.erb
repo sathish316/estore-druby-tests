@@ -1,0 +1,28 @@
+<h2>
+  <%= image_tag 'ecart.jpg', width: 50, height: 50%>
+  EStore
+</h2>
+<div class='order-links'>
+  <%= link_to 'Continue shopping', products_path %> | 
+  <%= link_to 'View Cart', @cart %>
+</div>
+<h3>Order # ESO<%=@order.id%></h3>
+<input type="hidden" id="order-id" value="<%=@order.id%>"/>
+<p>Status: <em><%=@order.status%></em></p>
+<input type="hidden" id="order-status" value="<%=@order.status%>"/>
+<% total_price = 0.0 %>
+<% @order.order_items.each do |order_item| %>
+  <%
+    product = @products_by_id[order_item.product_id]
+    price = order_item.quantity * order_item.price
+    total_price += price
+  %>
+  <div class="cart-item-#{cart_item.product_id}">
+    <%= order_item.quantity %>
+    x
+    <%= product['title'] %>
+    =
+    <%= price %>
+  </div>
+<% end %>
+Total: <%= total_price %>

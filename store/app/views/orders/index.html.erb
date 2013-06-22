@@ -1,0 +1,35 @@
+<h2>
+  <%= image_tag 'ecart.jpg', width: 50, height: 50%>
+  EStore
+</h2>
+<h3>Order status</h3>
+<p>
+<span><%=link_to 'All', orders_path %></span> |
+<span><%=link_to 'New', orders_path(status: 'created') %></span> |
+<span><%=link_to 'Fulfilled', orders_path(status: 'fulfilled') %></span> |
+</p>
+<table border='0'>
+  <tr>
+    <th>Order ID</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+
+<% @orders.each do |order| %>
+  <tr>
+    <td>
+      <%= link_to "ESO#{order.id}", order_path(order.id) %>
+    </td>
+    <td>
+      <%= order.status %>
+    </td>
+    <td>
+      <div class='order-actions'>
+        <% if order.status == 'created' %>
+          <%= button_to 'Fulfill', fulfill_order_path(order.id), id: "fulfill-order-#{order.id}" %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>
