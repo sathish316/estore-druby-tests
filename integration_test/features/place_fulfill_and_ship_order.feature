@@ -1,6 +1,6 @@
 Feature: Fulfill order from inventory and ship to customer
 
-  Scenario: Fulfill in stock item and ship to customer
+  Scenario: Fulfill in-stock item and ship to customer
 
     Given EStore has ordered "100" units of "Inferno" book with id "1" from "Penguin publishers"
     And all items are received from supplier "Penguin publishers" for product "1"
